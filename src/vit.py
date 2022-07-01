@@ -5,7 +5,7 @@ import pytorch_lightning as pl
 from torchmetrics import Accuracy
 
 class Visual_Transformer(pl.LightningModule):
-    def __init__(self, image_size, patch_size, num_classes, dim, depth, heads, mlp_dim, pool, channels, dim_head, dropout, emb_dropout):
+    def __init__(self, image_size, patch_size, num_classes, dim, depth, heads, mlp_dim, pool, channels, dim_head, dropout, emb_dropout, learning_rate):
         super(Visual_Transformer, self).__init__()
         self.image_size = image_size
         self.patch_size = patch_size
@@ -19,6 +19,7 @@ class Visual_Transformer(pl.LightningModule):
         self.dim_head = dim_head
         self.dropout = dropout
         self.emb_dropout = emb_dropout
+        self.learning_rate = learning_rate
         self.model = ViT(
             image_size = self.image_size,
             patch_size = self.patch_size,
